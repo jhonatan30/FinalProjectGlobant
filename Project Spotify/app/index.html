@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mySpotify">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spotify Search</title>
+    <meta name="description" content="Page where you can search music in Spotify. If you have Spotify account you can do it more searchs, such as your songs saved or your profile data" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- View mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font style -->
+    <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" type="text/css" />
+    <!-- Angular CDN -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css" />
+    
+    <!-- Charge favicon for diferents browsers -->
+    <!--[if IE]><link rel="shortcut icon" href="img/favicon.ico"><![endif]-->
+    <!-- Firefox, Chrome, Safari, IE 11+ and Opera -->
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+  </head>
+
+  <body ng-controller="TabController as tab">
+
+    <header ng-controller="infoUserController"> 
+      <div ng-hide="photoHidden">
+        <a href="{{infoUser.urlSpotify}}" target="_blank">
+          <img src="{{infoUser.image[0].url}}" alt="Profile photo">
+        </a>
+      </div>
+      <span> {{infoUser.name}} </span>
+      <div>
+        <img src="img/favicon.png" alt="Logo">
+      </div>
+    </header>
+
+    <!-- Section with de login button, if you login with Spotify account this section is hidden -->
+    <div ng-hide="hash" class="container-btn-login" ng-controller="loginController">      
+      <button ng-click="login()"> Sing in with Spotify </button>
+      <p> Search without spotify account or access with your account and get more </p>
+    </div>
+
+    <!-- Here is the navigation, 3 tab without account spotify and 6 tabs with account spotify -->
+    <nav  class="tab" >
+      <ul>
+        <li ng-click="tab.selectTab(1)" ng-class="{active:tab.isSelected(1)}">
+          <a href=""> Search and listen </a>
+        </li>
+        <li ng-click="tab.selectTab(2)" ng-class="{active:tab.isSelected(2)}">
+          <a href="">Search and list</a>
+        </li>
+        <li ng-click="tab.selectTab(3)" ng-class="{active:tab.isSelected(3)}">
+          <a href="">Random Artist</a>
+        </li>
+        <li ng-show="hash" ng-click="tab.selectTab(4)" ng-class="{active:tab.isSelected(4)}">
+          <a href="">Your tracks saved</a>
+        </li>
+        <li ng-show="hash" ng-click="tab.selectTab(5)" ng-class="{active:tab.isSelected(5)}">
+          <a href="">Your data info</a>
+        </li>
+      </ul>
+    </nav>
+
+      
+    <!-- TAB 1 -->
+    <div ng-show="tab.isSelected(1)" class="container-search-albums" ng-controller="searchArtistController">
+      <h2>Search and listen</h2>
+      <p> Search an artist, list albums and listen 30 seconds of first song for each album found </p>
+      <div class="container-form-search-artist">
+        <form id="search-artist">
+          <input type="text" id="query" value="" class="input-search" placeholder="Type an Artist Name" required />
+          <input class="btn-search" type="submit" value="Search" />
+        </form>
+      </div>
+
+      <div id="cover-albums">
+        <ul>
+          <li class="list-albums" ng-repeat="nameAlbum in dataAlbum">
+            <p id="{{nameAlbum.id}}">
+              <span>{{nameAlbum.name}}</span>
+            </p>
+            <img src="{{nameAlbum.images[1].url}}">
+          </li>
+        </ul>  
+      </div>
+    </div>
+
+
+    <!-- TAB 2 -->
+    <div id="results" class="container-search-tracks" ng-show="tab.isSelected(2)" ng-controller="searchListController">
+      <h2> Search and list </h2>
+      <p> Search an artist, list albums and see all tracks of each album selected </p>
+      
+      
+      <div class="container-form-search-artist">
+        <form id="search-artist-tracks">
+          <input type="text" id="queryList" value="" class="input-search" placeholder="Type an Artist Name" required />
+          <input class="btn-search" type="submit" value="Search" />
+        </form>
+      </div>
+
+      <div class="container-cover-albums-tracks" id="cover-albums-tracks">
+        <ol>
+          <li class="list-albums-tracks" ng-repeat="nameAlbum in dataAlbum" >
+            <img src="{{nameAlbum.images[1].url}}" id="{{nameAlbum.id}}" >
+          </li>
+        </ol>  
+      </div>
+
+      <div class="container-list-tracks">
+        <ol>
+          <li ng-repeat="track in listTracks">
+            {{track.name}} 
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- TAB 3 -->
+    <div class="container-random-artist" ng-show="tab.isSelected(3)" ng-controller="randomArtistController">
+      <h2> Random artist </h2>
+      <p> Search a random top-artist for year selected in Colombia</p>
+      <div class="container-form-random-artist">
+        <form id="search-random-artist">
+          <select name="year" id="optionYear">
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+            <option value="1994">1994</option>
+            <option value="1993">1993</option>
+            <option value="1992">1992</option>
+            <option value="1991">1991</option>
+            <option value="1990">1990</option>
+          </select>
+          <input type="submit" class="btn-search" value="Get artist random" />
+        </form>
+      </div>
+
+      <div class="container-result-random-artist">
+        <p> {{yearRandom}} </p>
+        <p> {{dataArtist.name}} </p>
+        <img ng-show="yearRandom" src="{{dataArtist.images[1].url}}" alt="artist photo">
+      
+    </div>
+
+
+    <!-- TAB 4 -->
+    <div class="container-saved-tracks" ng-show="tab.isSelected(4)" ng-controller="tracksSadevController"> 
+      <h2> Here is a list of yor songs saved on Spotify</h2>
+      <ul ng-repeat="track in savedTracks" class="list-saved-tracks">
+        <li> 
+          <p> <strong> {{track.track.name}} </strong> </p>
+          <p> {{track.track.artists[0].name}} </p>
+          <p> <strong> Save date:</strong> {{track.added_at | date }} </p>
+        </li>
+      </ul>
+    </div>    
+
+      
+    <!-- TAB 5 -->
+    <div ng-show="tab.isSelected(5)" ng-controller="profileInfoController" class="container-profile-info">
+      
+      <div >
+        <img src="{{imageProfile}}" alt="">
+      </div>
+
+      <div>
+        <div> 
+          <label>
+            Name
+          </label>
+          <p>{{name}} </p>
+        </div>
+
+        <div> 
+          <label>
+            Country
+          </label>
+          <p>{{country}}</p>
+        </div>
+
+        <div> 
+          <label>
+            E-mail
+          </label>
+          <p>{{email}}</p>
+        </div>
+
+        <div> 
+          <label>
+            Followers
+          </label>
+          <p>{{followers}}</p>
+        </div>
+        
+        <div> 
+          <label>
+            Id
+          </label>
+          <p>{{id}}</p>
+        </div>
+
+        <div> 
+          <label>
+            Type account
+          </label>
+          <p>{{product}}</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer with name of page creator and socil media links -->
+    <footer class="info-footer"> 
+      <p>Created by <strong>Jhonatan S. Delgado</strong> - </p>
+      <p>Powered by <strong> Spotify </strong> - </p>
+      <p> Source code <a href="https://github.com/jhonatan30/FinalProjectGlobant" target="_blank"> Git Hub </a> </p>
+    </footer>
+    
+    <!-- Load CDN angular -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!-- Load files javascript needed-->
+    <script type="text/javascript" src="js/app.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,442 @@
+/* Global
+------------------------------------------------------------------*/
+*, *:before, *:after {
+     -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+	border: 0;
+	font-family: 'Exo 2', sans-serif;
+	margin: 0;
+	padding: 0; 
+}
+
+body { background-color: #3D3D3D; }
+
+html,body {
+	color: white;
+	font-size: 16px;
+}
+
+h2 {
+	border-bottom: solid #B2FF00 5px; 
+	font-size: 2em;
+	font-weight: lighter;
+	padding: 5px;
+	text-align: center;
+}
+
+p { text-align: center; }
+
+
+/* Header
+------------------------------------------------------------------*/
+header { 
+	background-color: #84BD00; 
+	display: inline-block;
+	width: 100%
+}
+
+header div:first-child { display: inline-block; }
+
+header div:last-child { 
+	display: inline-block; 
+	float: right; 
+}
+
+header div:last-child img { height: 100px; }
+
+header div a img {
+	height: 100px;
+	padding: 5px;
+}
+
+header span { 
+	font-size: 2em;
+	vertical-align: top;
+}
+
+
+/* Login
+------------------------------------------------------------------*/
+.container-btn-login {
+	background-color: #58675C;
+	display: inline-block;
+	width: 100%;
+}
+
+.container-btn-login button {
+	background: #B2FF00;
+	background-image:         linear-gradient(#B2FF00, #84BD00);
+	background-image:      -o-linear-gradient(#B2FF00, #84BD00);
+  background-image: -webkit-linear-gradient(#B2FF00, #84BD00);
+  border: solid #B2FF00 1px;
+          border-radius: 60px;
+  	 -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+	color: white;
+	display: block;
+	margin: 50px auto;
+  padding: 10px 50px;
+	width: 30%;
+}
+
+.container-btn-login button:active { background: #84BD00; }
+
+.container-btn-login button:focus { outline:0px; }
+
+.container-btn-login button:hover {
+	background: #B2FF00;
+	cursor: pointer;
+}
+
+.container-btn-login p {
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+
+/* Tabs navigation
+------------------------------------------------------------------*/
+.tab {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.tab>ul {
+	background-color: #58675C;
+	padding-top: 20px; 
+	text-align: center;
+}
+
+.tab>ul .active { background-color: #B2FF00; }
+
+.tab>ul li {
+	background-color: #E9FFB5;
+	border: solid transparent 1px;
+	border-radius: 15px 15px 0 0;
+	display: inline-block;
+	list-style: none;
+	padding: 5px;
+	width: 18%;
+}
+
+.tab>ul li:hover {
+	background: #B2FF00;
+	border: solid #7EB500 1px;
+	cursor: pointer;
+	transition: ease-in-out 0.5s;
+}
+
+.tab>ul li a {
+	color: black;
+	text-decoration: none;
+}
+
+
+/* Result tab 1 : Search and listen
+------------------------------------------------------------------*/
+.container-cover-albums {
+	display: inline-block;
+	padding: 10px;
+	width: 100%;
+}
+
+.container-form-search-artist {
+	margin: 10px auto;
+	width: 60%;
+}
+
+.container-search-albums { margin-bottom: 50px; }
+
+.container-search-albums div:last-child { text-align: center; }
+
+.input-search {
+	border: solid #B2FF00 1px;
+	padding: 5px;
+	width: 48%; 
+}
+
+.input-search:focus {
+	background-color: #EAFFB8;
+	transition: ease-in 1s;
+}
+
+.list-albums {
+	display: inline-block;
+	padding: 5px;
+}
+
+.list-albums p {
+  background-color: rgba(178,255,0,0.85);
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  opacity: 0;
+ 	text-align: center;
+ 	color: black;
+ 	padding-top: 50px;
+ 	font-size: 2em;
+}
+
+.list-albums p:hover {
+	cursor: pointer;
+	opacity: 1;
+	-webkit-transition: all 0.5s ease-in;
+     -moz-transition: all 0.5s ease-in;
+          transition: all 0.5s ease-in;
+}
+
+.list-albums-tracks { display: inline-block; }
+
+
+/* Result tab 2 : Search and list
+------------------------------------------------------------------*/
+.container-cover-albums-tracks {
+	overflow: auto; 
+	white-space: nowrap;
+}
+
+.list-albums-tracks img { 
+	border: solid #B2FF00 5px; 
+	display: inline-block;	
+	padding: 2px;
+}
+
+.list-albums-tracks img:hover { 
+	cursor: pointer;
+	border: solid black 5px;
+	-webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.container-list-tracks ol {
+    list-style: none;
+    margin: 50px auto;
+    text-align: center;
+    width: 70%
+}
+
+.container-list-tracks li {
+	font-size: 1.2em;
+	background: #CFCFCF;
+  color: black;
+}
+
+.container-list-tracks li:nth-child(2n) { background: #828282; }
+
+
+/* Result tab 3: random artist
+------------------------------------------------------------------*/
+.container-result-random-artist { margin-bottom: 5%; }
+
+.container-result-random-artist img {    
+  display: block;
+  height: 350px;
+	margin: 0 auto ;
+	width: 350px;
+	border: solid #B2FF00 2px;
+}
+
+.container-result-random-artist p {    
+	text-align: center;
+	font-size: 2em;
+}
+
+.container-form-random-artist form { text-align: center; }
+
+.container-form-random-artist form select {
+	display: block;
+	margin: 15px auto;
+	padding: 5px;	
+}
+
+.container-form-random-artist form select option{
+		-webkit-appearance: none;
+			 -moz-appearance: none;
+      		  appearance:none;
+		background: #C7FF45;
+		color: black;
+}
+
+.container-form-random-artist form select option:nth-child(2n){
+		-webkit-appearance: none;
+			 -moz-appearance: none;
+      		  appearance:none;
+		background: #E7FFB1;
+		color: black;
+}
+
+
+/* Result tab 4 : Saved tracks
+------------------------------------------------------------------*/
+.list-saved-tracks { text-align: center; }
+
+.container-saved-tracks h2 { border-bottom: solid #B2FF00 5px; }
+
+.container-saved-tracks ul {
+    list-style: none;
+    margin: 0px auto;
+    width: 50%;
+}
+
+.container-saved-tracks li {
+		border-bottom: solid #B2FF00 1px;
+    padding: 12px 0px 0px 0;
+}
+
+
+
+/* Result tab 5 : Profile info
+------------------------------------------------------------------*/
+.container-profile-info img {
+	border: solid #B2FF00 5px;
+	border-radius: 500px;
+	height: 300px;
+	padding: 5px;
+	margin-top: 50px;
+	width: 300px;
+}
+
+.container-profile-info { text-align: center; }
+
+.container-profile-info p { text-align: center; }
+
+.container-profile-info label {
+	text-align: center;
+	font-size: 1.5em;
+	display: block;
+	color: #B2FF00;
+}
+
+.container-profile-info>div {
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+}
+
+.container-profile-info div:last-child {
+	margin-top: 50px;
+	margin-top: 0;
+}
+
+/* Input, button search
+------------------------------------------------------------------*/
+.btn-search {
+	background: #B2FF00;
+	background-image: -webkit-linear-gradient(#B2FF00, #84BD00);
+	background-image: -o-linear-gradient(#B2FF00, #84BD00);
+	background-image: linear-gradient(#B2FF00, #84BD00);
+  border: solid #B2FF00 1px;
+          border-radius: 60px;
+  -webkit-border-radius: 60;
+     -moz-border-radius: 60;
+	color: white;
+  padding: 5px;
+	width: 50%;
+}
+
+.btn-search:active { background: #84BD00; }
+
+.btn-search:focus { outline:0px; }
+
+.btn-search:hover {
+	background: #B2FF00;
+	cursor: pointer;
+}
+
+
+/* Footer
+------------------------------------------------------------------*/
+.info-footer {
+  	background-color: #B2FF00;
+  	bottom: 0;
+  	color: black;
+  	height: 3%;
+		position: fixed;
+  	right: 0;
+  	text-align: center;
+  	width: 100%;
+}
+
+.info-footer p { 
+	color: black; 
+	display: inline-block;
+}
+
+
+/* Media rules
+------------------------------------------------------------------*/
+@media (max-width: 870px)
+{	
+
+	.btn-search {
+		margin-top: 10px;
+		display: block;
+		width: 100%;
+		transition: all 1s ease ;
+	}
+
+	.container-form-search-artist {	width: 80%; }
+	
+	.container-profile-info>div { 
+		width: 100%;
+		display: block; 
+		margin-bottom: 50px;
+	}
+
+	.container-profile-info img {
+		width: 50%;
+		height: 50%;
+	}
+	
+	.container-saved-tracks li {
+		border-bottom: solid #B2FF00 1px;
+    padding: 12px 0px 0px 0;
+	}
+
+	.container-saved-tracks ul {
+    width: 100%;
+    transition: all 1s ease ;
+	}
+	
+	.input-search {
+		display: block;
+		width: 100%;
+		transition: all 1s ease-in-out ;
+	}
+
+	.tab>ul li {
+		display: block;
+		width: 100%;
+		border-radius: 0;
+		margin-top: 1px;
+		transition: all 1s ease-in-out ;
+	}
+}
+
+@media (max-width: 500px)
+{
+	.info-footer {
+  	height: 7%;
+		position: relative;
+	}
+
+	.tab>ul li {
+		display: block;
+		width: 100%;
+		border-radius: 0;
+		margin-top: 1px;
+	}
+
+	.txt-search-artist { font-size: 1em; }
+
+	header div:last-child { 
+		display: inline-block; 
+		width: 10%; opacity: 0;
+	}
+
+}
