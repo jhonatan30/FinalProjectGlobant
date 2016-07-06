@@ -386,6 +386,7 @@ header span {
 		width: 100%;
 		display: block; 
 		margin-bottom: 50px;
+		transition: all 1s ease ;
 	}
 
 	.container-profile-info img {
