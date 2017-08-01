@@ -15,20 +15,15 @@ Node JS installed
 
 To run project in necesary Gulp, Gulp clean and Browser Sync
 
-Fisrt install gulp
+1. Install dependencies
 ```
-$ npm install gulp
-```
-Second install gulp clean
-```
-$ npm install gulp-clean
-```
-Third install browser sync
-```
-$ npm install browser-sync
-```
+$ npm install
 
-Fourth run command gulp
+2. Install gulp-cli
+```
+$ npm install --global gulp-cli
+
+3. Run command gulp
 ```
 $ gulp
 ```
